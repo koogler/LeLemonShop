@@ -1,9 +1,20 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+$primary-color: #FFC107;
+$background-color: #FFE0B2;
+$text-color: black;
+$font-weights: (
+  "regular": 400,
+  "medium": 500,
+  "bold": 700
+);
+$hover-color: pink;
+$button-color: #f19f4d;
 
-  background-color: azure;
+// body {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   min-height: 100vh;
+
+//   background-color: $background-color;
   
-}
+// }
