@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS order ON DELETE CASCADE;
+DROP TABLE IF EXISTS order_history;
+
+CREATE TABLE order (
+  
+);
