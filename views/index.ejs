@@ -49,3 +49,69 @@
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </head>
+
+
+<body>
+
+  <%- include('partials/_header') %>
+
+
+  <!-- main container of the page -->
+
+  <main id="main-container">
+
+
+    <!-- menu section -->
+
+    <section id="section-container1">
+
+      <div id="menu" class="row row-cols-md-3 g-4">
+
+        <!-- ALL the menu items are populated here using jQuery -->
+
+      </div>
+    </section>
+
+
+    <!-- Order summary section -->
+
+    <section class ="card" id="order-container">
+      <header class="order-header">
+        <h5 class="card-title">Order Summary</h5>
+        <button type="button" class="btn btn-primary" id="clear-cart">Clear</button>
+      </header>
+
+      <form id="order-now" action="/api/orders" method="POST">
+        <section class="item-list">
+          <table class="order-table">
+            <thead>
+              <tr>
+                <th scope="col" class="order-item-name">Item</th>
+                <th scope="col" class="order-quantity">Quantity</th>
+                <th scope="col" class="order-price">Price</th>
+              </tr>
+            </thead>
+
+            <!-- Items added to cart are populated/appended here using jQuery -->
+
+            <tbody id="selected-items-container"></tbody>
+
+          </table>
+          <p class='message-to-customer' type='text'></p>
+          <table class="order-table" id="sum-order"></table>
+        </section>
+
+
+        <footer class="order-footer">
+          <div class="order-button">
+            <button type="submit" class="btn btn-primary">ORDER NOW</button>
+          </div>
+        </footer>
+      </form>
+    </section>
+
+
+  </main>
+</body>
+
+</html>
