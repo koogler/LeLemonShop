@@ -1,16 +1,15 @@
-DROP TABLE IF EXISTS order ON DELETE CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS full_ordered;
 
-CREATE TABLE order (
-  id INTEGER PRIMARY KEY NOT NULL,
-  quantity SMALLINT,
-  price SMALLINT
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  food_id INTEGER REFERENCES food_item(id),
+  quantity SMALLINT DEFAULT 0
 );
 
 CREATE TABLE full_ordered (
-  order_id FOREIGN KEY REFERENCES order(id),
-  food_id FOREIGN KEY REFERENCES food_item(id),
+  order_id INTEGER REFERENCES orders(id),
   created_at TIMESTAMP,
   completed_on TIMESTAMP,
-  isActive BOOLEAN
-)
+  isActive BOOLEAN DEFAULT 'TRUE'
+);

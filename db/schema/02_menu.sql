@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS food_item;
+DROP TABLE IF EXISTS food_item CASCADE;
 
 CREATE TABLE food_item (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -6,5 +6,6 @@ CREATE TABLE food_item (
   thumbnail_URL VARCHAR(2083),
   description TEXT,
   price SMALLINT,
-  created_at TIMESTAMP,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  isActive BOOLEAN DEFAULT 'TRUE'
 );
