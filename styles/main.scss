@@ -1,17 +1,37 @@
+$primary-color: #FFC107;
+$background-color: #FFE0B2;
+$text-color: black;
+$font-weights: (
+  "regular": 400,
+  "medium": 500,
+  "bold": 700
+);
+$font-family: 'El Messiri', sans-serif;
+$hover-color: pink;
+$button-color: #f19f4d;
+
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-color: $background-color;
+  font-weight: map-get($font-weights, regular);
+  font-family: $font-family;
+}
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+.box {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start; 
+}
+
+.menu > img {
+  display: flex;
+  width: 50px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  padding: 0, 5%, 0, 5%;
 }
