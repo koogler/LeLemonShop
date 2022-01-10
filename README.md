@@ -6,7 +6,7 @@ Download all the needed dependencies by using ``` npm i ```
 
 Once that is done, you may use the command ``` npm run local ``` to see our page!
 
-# Dependencies #
+## Dependencies ##
 - "chalk": "^2.4.2",
 - "dotenv": "^2.0.0",
 - "ejs": "^2.6.2",
@@ -16,17 +16,18 @@ Once that is done, you may use the command ``` npm run local ``` to see our page
 - "pg-native": "^3.0.0",
 - "sass": "^1.35.1"
 # Features #
-#### customer POV ####
+#### Customer POV ####
 - [ ] View menu and prices for each item
 - [ ] Add and delete items from order
 - [ ] Checkout order
 - [ ] View subtotal
 - [ ] Shows Estimated Time Needed for Order
-- [ ] Informs when their order is ready for pickup
+- [ ] Informed when their order is ready for pickup
 
-#### restaurant POV ####
+#### Restaurant POV ####
 - [ ] Send SMS updates to customer's phone
 - [ ] Add and delete items from menu
 - [ ] View total amount of money earned
+- [ ] Can regularly update the order via SMS
 
 # Routes #
