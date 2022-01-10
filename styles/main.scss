@@ -6,6 +6,7 @@ $font-weights: (
   "medium": 500,
   "bold": 700
 );
+$font-family: 'El Messiri', sans-serif;
 $hover-color: pink;
 $button-color: #f19f4d;
 
@@ -15,9 +16,9 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-
   background-color: $background-color;
   font-weight: map-get($font-weights, regular);
+  font-family: $font-family;
 }
 
 .box {
@@ -26,7 +27,7 @@ body {
   align-items: flex-start; 
 }
 
-.menuimages {
+.menu > img {
   display: flex;
   width: 50px;
   height: 100px;

@@ -2,6 +2,21 @@ $primary-color: #FFC107;
 $box-color: transparent;
 $button-color:#daa17c;
 
-nav{
+nav {
+  display: flex;
+  align-items: flex-start;
+  position: fixed;
   color: $primary-color;
+  width: 100%;
+}
+
+nav > h1{
+  justify-content: left;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 24pt;
+}
+
+nav > img{
+  width: fit-content;
+  height:fit-content;
 }
