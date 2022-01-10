@@ -17,16 +17,16 @@ Once that is done, you may use the command ``` npm run local ``` to see our page
 - "sass": "^1.35.1"
 # Features #
 #### customer POV ####
-- [] View menu and prices for each item
-- [] Add and delete items from order
-- [] Checkout order
-- [] View subtotal
-- [] Shows Estimated Time Needed for Order
-- [] Informs when their order is ready for pickup
+- [ ] View menu and prices for each item
+- [ ] Add and delete items from order
+- [ ] Checkout order
+- [ ] View subtotal
+- [ ] Shows Estimated Time Needed for Order
+- [ ] Informs when their order is ready for pickup
 
 #### restaurant POV ####
-- [] Send SMS updates to customer's phone
-- [] Add and delete items from menu
-- [] View total amount of money earned
+- [ ] Send SMS updates to customer's phone
+- [ ] Add and delete items from menu
+- [ ] View total amount of money earned
 
 # Routes #
