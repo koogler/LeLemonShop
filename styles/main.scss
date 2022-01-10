@@ -9,12 +9,27 @@ $font-weights: (
 $hover-color: pink;
 $button-color: #f19f4d;
 
-// body {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   min-height: 100vh;
 
-//   background-color: $background-color;
-  
-// }
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  background-color: $background-color;
+  font-weight: map-get($font-weights, regular);
+}
+
+.box {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start; 
+}
+
+.menuimages {
+  display: flex;
+  width: 50px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
