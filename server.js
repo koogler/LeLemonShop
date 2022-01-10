@@ -7,6 +7,11 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['sdf8g789sdf7g98sdf7g89sdfg79sd8fg7', '89sdf7g089sdjF089SDFJ0sdf']
+}));
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -48,8 +53,11 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+
 app.get("/", (req, res) => {
-  res.render("index");
+  const cookieStore = (req.session.userId);
+  const templateVars = { userId: cookieStore }
+  res.render("index", templateVars);
 });
 
 app.listen(PORT, () => {
