@@ -154,3 +154,44 @@ $(() => {
       }
     });
   });
+
+
+  // Order is triggered
+  $(document).on("click", ".order-button", function(event) {
+    event.preventDefault();
+
+    //Clears order-summary and displays message
+    $itemContainer.empty();
+    $sumOrder.empty();
+    $('.message-to-customer').text('Thank you for your order! You will receive our confirmation shortly.');
+    $('.message-to-customer').show();
+
+    $.ajax('/api/orders', {
+      method: 'POST',
+      dataType: 'JSON',
+      data: orderList,
+      success: (data) => {
+        console.log(data);
+      },
+      error: (err) => {
+        console.log(`Error details: ${err}`);
+      }
+    });
+
+    //AJAX request to /api/twilio
+    $.ajax('/api/twilio', {
+      method: 'POST',
+      dataType: 'JSON',
+      data: orderList,
+      success: (data) => {
+        console.log("Minutes:", data);
+      },
+
+      error: (err) => {
+        console.log(`Error details: ${err}`);
+      }
+    });
+    emptyCart();
+  });
+
+});
