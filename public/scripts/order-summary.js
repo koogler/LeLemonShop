@@ -99,3 +99,19 @@ $(() => {
       }
     }
   };
+
+
+
+  // Makes changes in the cart, for the .ajax post
+  const changeCart = (itemId, itemName, itemPrice) => {
+    if (isInCart(itemId)) {
+      return updateItem(itemId, itemPrice);
+    } else {
+      return orderList.items.push({
+        item_id: itemId,
+        name: itemName,
+        quantity: 1,
+        price: itemPrice
+      });
+    }
+  };
