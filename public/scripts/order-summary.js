@@ -30,3 +30,36 @@ $(() => {
 
       return $selectedItem;
     };
+
+
+    const refreshSumOrder = (total) => {
+      const tax = Math.round(total * 15) / 100;
+
+      $sumOrder.empty();
+
+      const $markup = `
+        <tr class="order-item">
+          <td class="order-item-name">---</td>
+          <td class="order-quantity"></td>
+          <td class="order-price"></td>
+        </tr>
+        <tr class="order-item">
+          <td class="order-item-name">Subtotal</td>
+          <td class="order-quantity"></td>
+          <td class="order-price">${Number.parseFloat(total).toFixed(2)}</td>
+        </tr>
+        <tr class="order-item">
+          <td class="order-item-name">Total Tax (15%)</td>
+          <td class="order-quantity"></td>
+          <td class="order-price">${tax}</td>
+        </tr>
+
+        <tr class="order-item">
+          <td class="order-item-name"><strong>Total</strong></td>
+          <td class="order-quantity"></td>
+          <td class="order-price"><strong>${Math.round((total + tax) * 100) / 100}</strong></td>
+        </tr>
+        `
+      $sumOrder.append($markup);
+      return $sumOrder;
+    };
