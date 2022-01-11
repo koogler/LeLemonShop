@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,3 +50,34 @@
 
 </head>
 
+<body>
+
+  <%- include('partials/_header') %>
+
+
+  <!-- main container of the page -->
+
+  <main id="main-container">
+
+    <ul class="container">
+      <% for(let order in orders) { %>
+        <div class="list-group">
+          <li class="list-group-item history-title orderID" value="<%= orders[order].orderId %>">
+            <strong>Order ID: </strong><%= `${orders[order].orderId} --- At: ${orders[order].date.toDateString()} `%>
+          </li>
+          <li class="list-group-item history-title order-status">
+            <strong>Status: </strong><%= ` ${orders[order].status} `%>
+          </li>
+          <li class="list-group-item">
+            <table class="table table-sm table-borderless">
+              <tbody>
+                <% for(const item of orders[order].contents) { %>
+                  <tr>
+                    <td>
+                      <%= item %>
+                    </td>
+                  </tr>
+                  <% } %>
+              </tbody>
+            </table>
+          </li>
