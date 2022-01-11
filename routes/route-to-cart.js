@@ -8,8 +8,16 @@ module.exports = (db) => {
     let query = `
     SELECT name, price
     FROM food_items
-    WHERE id = ${foodID}
+    WHERE id = $1
     `
+    db.query(query, pg)
+      .then(data => {
+        const item = data.rows
+        res.json({item})
+      })
+      .catch(err => {
+        res.status(500).send("No Lemons here")
+      })
   })
 
   router.post("/", (req, res) => {
