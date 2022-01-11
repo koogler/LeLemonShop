@@ -76,3 +76,16 @@ $(() => {
 
     //Calling function to populate items when object has content
     renderItems();
+
+
+    // Checks if the item is in cart for changeCart() function)
+  const isInCart = (itemId) => {
+    const itemsInCart = [];
+    for(const item of orderList.items) {
+      itemsInCart.push(item.item_id);
+    }
+    if (itemsInCart.includes(itemId)) {
+      return true;
+    }
+    return false;
+  };
