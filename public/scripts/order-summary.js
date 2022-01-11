@@ -123,3 +123,34 @@ $(() => {
     $sumOrder.empty();
     emptyCart();
   });
+
+
+  // When client clicks on the add-to-cart button
+  $(document).on("click", ".add-to-cart", function(event) {
+    event.preventDefault();
+
+    $('.message-to-customer').hide();
+    $('#clear-cart').show();
+
+
+    $.ajax('/api/add-to-cart', {
+      method: 'POST',
+      dataType: 'JSON',
+      data: {
+        id: event.target.value
+      },
+      success: (data) => {
+        const itemId = data.item[0].id;
+        const itemName = data.item[0].name;
+        const itemPrice = data.item[0].price;
+        totalPlusTax += itemPrice;
+        refreshSumOrder(totalPlusTax);
+        changeCart(itemId, itemName, itemPrice)
+        renderItems();
+      },
+
+      error: (err) => {
+        console.log(`Error details: ${err}`);
+      }
+    });
+  });
