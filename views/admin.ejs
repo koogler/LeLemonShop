@@ -81,3 +81,33 @@
               </tbody>
             </table>
           </li>
+
+          <li class="list-group-item customerName" value="<%= orders[order].customerName %>">
+            <strong>Customer Name:</strong> <%= orders[order].customerName %>
+              <form class="prep-info" method="POST" action="/api/twilio/prep-time">
+                <label><strong>Tel.:</strong></label>
+                <input class="form-control phone" name="customerPhone" value="<%= `${orders[order].customerPhone}` %> ">
+                <label for="<%= `${orders[order].orderId}` %>"><strong>Insert Prep Time & Confirm Order</strong></label>
+                <input type="number" min="1" max="60" class="form-control prep-time"
+                  id="<%= `${orders[order].orderId}` %>" name="minutes">
+                <button type="submit" class="btn btn-primary">Confirm order</button>
+              </form>
+              <form class="pick-up-alert" method="POST" action="/api/twilio/pick-up-alert">
+                <button id="finished" name="finished" value="<%= orders[order].orderId %>" type="submit"
+                  class="btn btn-primary">Mark as complete</button>
+              </form>
+          </li>
+        </div>
+        <br>
+      <% } %>
+    </ul>
+
+  </main>
+
+  <footer>
+
+  </footer>
+
+</body>
+
+</html>
