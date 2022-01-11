@@ -46,14 +46,16 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const addToCart = require("./routes/route-to-cart")
-const activeMenu = require("./routes/orders")
+const activeMenu = require("./routes/menu")
+const orders = require("./routes/orders")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/cart", addToCart(db))
-app.use("/api/order", activeMenu(db))
+app.use("/api/menu", activeMenu(db))
+app.use("/api/order", orders(db))
 
 // Note: mount other resources here, using the same pattern above
 

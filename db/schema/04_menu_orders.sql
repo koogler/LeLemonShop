@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS menu_orders CASCADE;
-DROP TABLE IF EXISTS full_ordered;
 
 CREATE TABLE menu_orders (
   id SERIAL PRIMARY KEY NOT NULL,
