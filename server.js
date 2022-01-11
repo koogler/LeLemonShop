@@ -45,17 +45,17 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
-const addToCart = require("./routes/route-to-cart")
-const activeMenu = require("./routes/menu")
-const orders = require("./routes/orders")
+const addToCart = require("./routes/route-to-cart");
+const activeMenu = require("./routes/menu");
+const orders = require("./routes/orders");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-app.use("/api/cart", addToCart(db))
-app.use("/api/menu", activeMenu(db))
-app.use("/api/order", orders(db))
+app.use("/api/cart", addToCart(db));
+app.use("/api/menu", activeMenu(db));
+app.use("/api/order", orders(db));
 
 // Note: mount other resources here, using the same pattern above
 
@@ -63,10 +63,9 @@ app.use("/api/order", orders(db))
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-
 app.get("/", (req, res) => {
   const cookieStore = (req.session.userId);
-  const templateVars = { userId: cookieStore }
+  const templateVars = { userId: cookieStore };
   res.render("index", templateVars);
 });
 

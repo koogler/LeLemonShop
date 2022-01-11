@@ -8,7 +8,7 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/:id/order", (req, res) => {
     let query = `
-    SELECT SUM() as total-profit
+    SELECT ROUND(SUM(price * quantity * 100)) as total_profit
     FROM menu_orders
     JOIN orders ON orders.id = order_id
     JOIN food_items ON food_items.id = food_id`;
