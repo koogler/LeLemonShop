@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <!-- Meta Information -->
+
+  <title>Le-Lemon - Home Page</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+
+
+  <!-- Bootstrap/External CSS -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+  <!-- App CSS -->
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- Add CSS files from styles here -->
+
+
+
+  <!-- App JS -->
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/admin.js"></script>
+  <script type="text/javascript" src="/scripts/menu.js"></script>
+  <script type="text/javascript" src="/scripts/order-summary.js"></script>
+  <script type="text/javascript" src="/scripts/twilio.js"></script>
+  <!-- Add JS files from scripts here -->
+
+
+  <!-- Bootstrap/External JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+  <!-- Top nav bar (fixed) -->
+
+  <nav>
+    <div class="logo-container"><img id="logo" src="/images/##.png">LE-LEMON</div>
+    <span>
+      <p class="customer-greeting">Dashboard</p>
+    </span>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <form action="/api/" method="POST">
+          <button type="submit" class="btn btn-primary">LOGOUT</button>
+        </form>
+      </li>
+    </ul>
+  </nav>
+
+
+  <!-- main container of the page -->
+
+  <main id="main-container">
+
+    <ul class="container">
+      <% for(let order in orders) { %>
+        <div class="list-group">
+          <li class="list-group-item history-title orderID" value="<%= orders[order].orderId %>">
+            <strong>Order ID: </strong><%= `${orders[order].orderId} --- At: ${orders[order].date.toDateString()} `%>
+          </li>
+          <li class="list-group-item history-title order-status">
+            <strong>Status: </strong><%= ` ${orders[order].status} `%>
+          </li>
+          <li class="list-group-item">
+            <table class="table table-sm table-borderless">
+              <tbody>
+                <% for(const item of orders[order].contents) { %>
+                  <tr>
+                    <td>
+                      <%= item %>
+                    </td>
+                  </tr>
+                  <% } %>
+              </tbody>
+            </table>
+          </li>
+
+          <li class="list-group-item customerName" value="<%= orders[order].customerName %>">
+            <strong>Customer Name:</strong> <%= orders[order].customerName %>
+              <form class="prep-info" method="POST" action="/api/twilio/prep-time">
+                <label><strong>Tel.:</strong></label>
+                <input class="form-control phone" name="customerPhone" value="<%= `${orders[order].customerPhone}` %> ">
+                <label for="<%= `${orders[order].orderId}` %>"><strong>Insert Prep Time & Confirm Order</strong></label>
+                <input type="number" min="1" max="60" class="form-control prep-time"
+                  id="<%= `${orders[order].orderId}` %>" name="minutes">
+                <button type="submit" class="btn btn-primary">Confirm order</button>
+              </form>
+              <form class="pick-up-alert" method="POST" action="/api/twilio/pick-up-alert">
+                <button id="finished" name="finished" value="<%= orders[order].orderId %>" type="submit"
+                  class="btn btn-primary">Mark as complete</button>
+              </form>
+          </li>
+        </div>
+        <br>
+      <% } %>
+    </ul>
+
+  </main>
+
+  <footer>
+
+  </footer>
+
+</body>
+
+</html>
