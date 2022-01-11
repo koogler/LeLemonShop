@@ -1,7 +1,3 @@
-$primary-color: #FFC107;
-$box-color: transparent;
-$button-color:#daa17c;
-
 nav {
   display: flex;
   align-items: flex-start;
@@ -19,4 +15,15 @@ nav > h1{
 nav > img{
   width: fit-content;
   height:fit-content;
+}
+
+button {
+  background-color: $button-color;
+  border-color: $button-color;
+  color: white;
+  font-weight: $font-weights;
+}
+
+button:hover{
+  background-color: #B2ACFF;
 }
