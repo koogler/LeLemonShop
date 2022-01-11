@@ -40,6 +40,10 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/admin.js"></script>
+  <script type="text/javascript" src="/scripts/menu.js"></script>
+  <script type="text/javascript" src="/scripts/order-summary.js"></script>
+  <script type="text/javascript" src="/scripts/twilio.js"></script>
   <!-- Add JS files from scripts here -->
 
 
@@ -52,7 +56,22 @@
 
 <body>
 
-  <%- include('partials/_header') %>
+
+  <!-- Top nav bar (fixed) -->
+
+  <nav>
+    <div class="logo-container"><img id="logo" src="/images/cupcake.png">LE-LEMON</div>
+    <span>
+      <p class="customer-greeting">Dashboard</p>
+    </span>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <form action="/api/" method="POST">
+          <button type="submit" class="btn btn-primary">LOGOUT</button>
+        </form>
+      </li>
+    </ul>
+  </nav>
 
 
   <!-- main container of the page -->
