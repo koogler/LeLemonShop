@@ -63,3 +63,16 @@ $(() => {
       $sumOrder.append($markup);
       return $sumOrder;
     };
+
+
+    const renderItems = () => {
+      $itemContainer.empty();
+      let $selectedItem;
+      for (const item of orderList.items) {
+        $selectedItem = addNewItem(item.name, item.quantity, item.price);
+        $itemContainer.append($selectedItem);
+      }
+    };
+
+    //Calling function to populate items when object has content
+    renderItems();
