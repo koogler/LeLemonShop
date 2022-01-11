@@ -1,21 +1,20 @@
 const express = require('express');
 const router  = express.Router();
 
-///////////////////////////////
-// Food items to add to cart //
-///////////////////////////////
+/////////////////////////////
+// Retrieve full menu list //
+/////////////////////////////
 
 module.exports = (db) => {
-  router.post("/", (req, res) => {
-    const foodID = req.body.id;
-    const qp = [foodID];
+  router.get("/:id/menu", (req, res) => {
     let query = `
-    SELECT name, price
+    SELECT name, image, description, price
     FROM food_items
-    WHERE id = $1;
+    WHERE isActive = TRUE
+    ORDER BY name;
     `;
 
-    db.query(query, qp)
+    db.query(query)
       .then(data => {
         const item = data.rows;
         res.json({item});
