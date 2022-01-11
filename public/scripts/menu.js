@@ -1,3 +1,5 @@
+
+
 $(() => {
 
 
@@ -20,6 +22,7 @@ $(() => {
     `
     return $markup;
   };
+
 
   // prepending the markup for each menu item (prepend for descending order)
   const renderMenuItems = function(menu) {
