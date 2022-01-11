@@ -50,3 +50,40 @@
 
 </head>
 
+<body>
+
+  <%- include('partials/_header') %>
+
+
+  <!-- main container of the page -->
+
+  <main id="main-container">
+
+    <ul class="container">
+      <% for(let order in orders) { %>
+        <div class="list-group">
+          <li class="list-group-item history-title"><%= `${orders[order].date.toDateString()} --- ${orders[order].status} `%></li>
+          <li class="list-group-item">
+            <table class="table table-sm table-borderless" style="text-align: center;">
+              <tbody>
+                <% for(const item of orders[order].contents) { %>
+                  <tr>
+                    <td><%= item %></td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </li>
+        </div>
+        <br>
+      <% } %>
+    </ul>
+
+  </main>
+
+  <footer>
+
+  </footer>
+</body>
+
+</html>
