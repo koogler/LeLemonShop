@@ -115,3 +115,11 @@ $(() => {
       });
     }
   };
+
+
+  $(document).on("click", "#clear-cart", function(event) {
+    event.preventDefault();
+    $itemContainer.empty();
+    $sumOrder.empty();
+    emptyCart();
+  });
