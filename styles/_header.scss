@@ -1,0 +1,46 @@
+$primary-color: #FFC107;
+$background-color: #FFE0B2;
+$font-color: white;
+$text-color: black;
+$font-weights: (
+  "regular": 400,
+  "medium": 500,
+  "bold": 700
+);
+$font-family: 'El Messiri', sans-serif;
+$hover-color: pink;
+$button-color: #eb8f33;
+$hover-color: #B2ACFF;
+
+nav{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  position: relative;
+  color: $primary-color;
+  width: fit-content;
+  padding: 10px, 10px, 10px, 10px;
+}
+
+nav > img{
+  width: fit-content;
+  height:fit-content;
+}
+
+button {
+  background-color: $button-color;
+  border-color: $button-color;
+  color: $font-color;
+  font-weight: $font-weights;
+}
+
+button:hover{
+  background-color: #B2ACFF;
+}
