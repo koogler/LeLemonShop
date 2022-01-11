@@ -27,4 +27,22 @@ $(() => {
       const newItem = createMenuItem(item);
       $("#menu").prepend(newItem);   // "id = menu" in index.ejs
     }
-  }
+  };
+
+
+  // Ajax request to get JSON data for rendering the menu items
+  const getMenu = function() {
+    $.ajax({
+      url: "/api/menu",
+      type: "GET",
+      dataType: "JSON",
+      success: (data) => {
+        const menu = data.menuItems;
+        renderMenuItems(menu)
+      }
+    })
+  };
+
+  getMenu();
+
+});
