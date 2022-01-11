@@ -89,3 +89,13 @@ $(() => {
     }
     return false;
   };
+
+
+  const updateItem = (itemId, itemPrice) => {
+    for(const item of orderList.items) {
+      if (item.item_id === itemId) {
+        item.quantity++;
+        item.price += itemPrice;
+      }
+    }
+  };
