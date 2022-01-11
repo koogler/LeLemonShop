@@ -1,10 +1,9 @@
 DROP TABLE IF EXISTS orders CASCADE;
-DROP TABLE IF EXISTS full_ordered;
 
 CREATE TABLE orders (
-  id SERIAL PRIMARY KEY NOT NULL,
-  food_id INTEGER REFERENCES food_item(id),
+  order_id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id),
   quantity SMALLINT DEFAULT 0,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-  note TEXT
+  ordered_at TIMESTAMP DEFAULT Now(),
+  prep_time TIMESTAMP DEFAULT Now() + time '00:05'
 );
