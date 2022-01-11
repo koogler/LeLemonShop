@@ -1,6 +1,5 @@
-const accountSid = 'ACddcafc057b6c7f45766540b0ca4a394b'
-const authToken = 'f07152d0110358a920fc3b6696022745'
-
+const accountSid = process.env.TWILIO_ACCOUNT_SID
+const authToken = process.env.TWILIO_AUTH_TOKEN
 const client = require('twilio')(accountSid, authToken)
 
 router.post('/:orderId/prep-time', function (req, res) {
