@@ -1,12 +1,9 @@
 DROP TABLE IF EXISTS orders CASCADE;
 
 CREATE TABLE orders (
-  user_id INTEGER REFERENCES users(id)
-  food_id INTEGER REFERENCES food_item(id),
+  order_id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id),
   quantity SMALLINT DEFAULT 0,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  CONSTRAINT users
-    FOREIGN KEY(user_id)
-    REFERENCES users(users.id)
-    ON DELETE SET NULL
+  ordered_at TIMESTAMP DEFAULT Now(),
+  prep_time TIMESTAMP DEFAULT Now() + time '00:05'
 );
