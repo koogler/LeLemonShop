@@ -1,15 +1,7 @@
 <header>
   <nav>
     <div class="logo-container"><img id="logo" src="/images/logo.png">Le-Lemon</div>
-<<<<<<< HEAD
-=======
-    <div class="logo-container"><img id="logo" src="/images/logo.png"></div>
-    <h1>LE-LEMON</h1>
->>>>>>> SQL
-    <!-- <% if(!userId) { %> -->
-=======
     <% if(!userId) { %>
->>>>>>> Evan_backend
       <ul class="nav justify-content-end">
         <li class="nav-item">
           <a class="nav-link" href="/api/users/login">LOGIN</a>
@@ -18,7 +10,7 @@
           <a class="nav-link" href="/api/users/register">REGISTER</a>
         </li>
       </ul>
-      <!-- <% } else { %> -->
+      <% } else { %>
         <p class="customer-greeting">Welcome!</p>
         <ul class="nav justify-content-end">
           <li class="nav-item">
@@ -29,7 +21,7 @@
               <button type="submit" class="btn btn-primary">LOGOUT</button>
             </form>
           </li>
-          <!-- <% } %> -->
+          <% } %>
         </ul>
   </nav>
 </header>
