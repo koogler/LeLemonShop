@@ -20,12 +20,21 @@ https://images.unsplash.com/photo-1497534446932-c925b458314e?ixlib=rb-1.2.1&ixid
 https://images.unsplash.com/photo-1499638673689-79a0b5115d87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80 by Jennifer Pallian
 
 *Raspberry Lemonade*
-https://images.pexels.com/photos/2110927/pexels-photo-2110927.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 by Naim Benjalloun 
+https://images.pexels.com/photos/2110927/pexels-photo-2110927.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 by Naim Benjalloun
+
+*Hallows Brew*
+https://pixabay.com/photos/drink-cocktail-candles-dark-creepy-5690582/ by Kathrin
+
+*Sour Skids*
+https://pixabay.com/photos/gin-tonic-cocktail-lemon-alcohol-6875377/ by Ri Butov
+
+*Marshmallows Eve*
+https://pixabay.com/photos/rodessa-rozhdesvensky-holiday-4672690/ by Ксения
 
 #### Management Tools ####
-Trello
-Draw.io
-Discord
-Slack
+- Trello
+- Draw.io
+- Discord
+- Slack
 
 ####  ####
