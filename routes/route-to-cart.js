@@ -21,7 +21,7 @@ module.exports = (db) => {
         res.json({item});
       })
       .catch(err => {
-        res.status(500).send("No Lemons here");
+        res.status(500).send("I've stapled the lemons to the wall");
       });
   });
   return router;

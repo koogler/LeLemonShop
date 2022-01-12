@@ -23,5 +23,24 @@ module.exports = (db) => {
         res.status(500).send("No Lemons here");
       });
   });
+
+  router.post("/", (req, res) => {
+    let query = `
+    SELECT name, image, description, price
+    FROM food_items
+    WHERE isActive = TRUE
+    ORDER BY name;
+    `;
+
+    db.query(query)
+      .then(data => {
+        const item = data.rows;
+        res.json({item});
+      })
+      .catch(err => {
+        res.status(500).send("I've stapled the lemons to the wall");
+      });
+  })
+
   return router;
 };
