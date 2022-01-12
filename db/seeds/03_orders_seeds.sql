@@ -1,9 +1,9 @@
-INSERT INTO orders (user_id, quantity)
+INSERT INTO orders (user_id)
 VALUES
-(1, 3),
-(2, 5)
-(2, 7)
-(3, 2)
-(4, 3)
-(4, 1)
+(1),
+(2),
+(2),
+(3),
+(4),
+(4);
 
