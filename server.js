@@ -22,8 +22,11 @@ db.connect();
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
-app.use(morgan("dev"));
 
+////////////////
+// Middleware //
+////////////////
+app.use(morgan("dev"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
@@ -43,22 +46,28 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const twilioRoutes = require("./routes/twilio")
+const addToCart = require("./routes/route-to-cart");
+const activeMenu = require("./routes/menu");
+const orders = require("./routes/orders");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/twilio", twilioRoutes(db))
+app.use("/api/order", addToCart(db));
+app.use("/api/menu", activeMenu(db));
+app.use("/api/order", orders(db));
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-
 app.get("/", (req, res) => {
   const cookieStore = (req.session.userId);
-  const templateVars = { userId: cookieStore }
+  const templateVars = { userId: cookieStore };
   res.render("index", templateVars);
 });
 

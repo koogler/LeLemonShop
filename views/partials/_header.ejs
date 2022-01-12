@@ -1,0 +1,26 @@
+<header>
+  <nav>
+    <div class="logo-container"><img id="logo" src="/images/logo.png">Le-Lemon</div>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="/api/users/login">LOGIN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/api/users/register">REGISTER</a>
+        </li>
+      </ul>
+      <!-- <% } else { %> -->
+        <p class="customer-greeting">Welcome!</p>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href="/my-orders">MY ORDERS</a>
+          </li>
+          <li class="nav-item">
+            <form action="/api/users/logout" method="POST">
+              <button type="submit" class="btn btn-primary">LOGOUT</button>
+            </form>
+          </li>
+          <!-- <% } %> -->
+        </ul>
+  </nav>
+</header>
