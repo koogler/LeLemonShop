@@ -6,7 +6,7 @@ const router  = express.Router();
 /////////////////////////////
 
 module.exports = (db) => {
-  router.get("/:id/menu", (req, res) => {
+  router.get("/", (req, res) => {
     let query = `
     SELECT name, image, description, price
     FROM food_items
