@@ -38,7 +38,6 @@ module.exports = (db) => {
     WHERE
       menu_orders.food_id = 2;`;
 
-
     db.query(query, qp)
     .then(data => {
       const item = data.rows;

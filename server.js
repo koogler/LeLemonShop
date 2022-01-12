@@ -44,8 +44,7 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
-const twilioRoutes = require("./routes/twilio")
+// const twilioRoutes = require("./routes/twilio");
 const addToCart = require("./routes/route-to-cart");
 const activeMenu = require("./routes/menu");
 const orders = require("./routes/orders");
@@ -53,8 +52,7 @@ const orders = require("./routes/orders");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-app.use("/api/twilio", twilioRoutes(db))
+// app.use("/api/twilio", twilioRoutes(db))
 app.use("/api/order", addToCart(db));
 app.use("/api/menu", activeMenu(db));
 app.use("/api/order", orders(db));
