@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 /////////////////////////////
 // Retrieve full menu list //
@@ -17,14 +17,14 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         const item = data.rows;
-        res.json({item});
+        res.json({ item });
       })
       .catch(err => {
         res.status(500).send("No Lemons here");
       });
   });
 
-  router.post("/", (req, res) => {
+  router.post("/api/menu", (req, res) => {
     let query = `
     SELECT name, image, description, price
     FROM food_items
@@ -35,7 +35,7 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         const item = data.rows;
-        res.json({item});
+        res.json({ item });
       })
       .catch(err => {
         res.status(500).send("I've stapled the lemons to the wall");

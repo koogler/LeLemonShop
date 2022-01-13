@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 ///////////////////////////////
 // Food items to add to cart //
@@ -17,8 +17,8 @@ module.exports = (db) => {
 
     db.query(query, qp)
       .then(data => {
-        const item = data.rows;
-        res.json({item});
+        const item = data;
+        res.json({ item });
       })
       .catch(err => {
         res.status(500).send("I've stapled the lemons to the wall");
@@ -30,7 +30,7 @@ module.exports = (db) => {
     const qp = [foodID]
     let query = `
     UPDATE menu_orders
-    SET 
+    SET
       quantity = menu_orders.quantity + 1
     FROM
       menu_orders t
@@ -40,13 +40,13 @@ module.exports = (db) => {
       menu_orders.food_id = $1;`;
 
     db.query(query, qp)
-    .then(data => {
-      const item = data.rows;
-      res.json({item});
-    })
-    .catch(err => {
-      res.status(500).send("I've stapled the lemons to the wall");
-    });
+      .then(data => {
+        const item = data;
+        res.json({ item });
+      })
+      .catch(err => {
+        res.status(500).send("I've stapled the lemons to the wall");
+      });
   })
   return router;
 };

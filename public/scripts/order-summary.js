@@ -5,7 +5,7 @@ $(() => {
   const $itemContainer = $('#selected-items-container');
   const $sumOrder = $('#sum-order');
 
-  let totalPlusTax = 0;
+  let total = 0;
 
   const orderList = {
     items: []
@@ -81,7 +81,7 @@ $(() => {
   // Checks if the item is in cart for changeCart() function)
   const isInCart = (itemId) => {
     const itemsInCart = [];
-    for(const item of orderList.items) {
+    for (const item of orderList.items) {
       itemsInCart.push(item.item_id);
     }
     if (itemsInCart.includes(itemId)) {
@@ -92,7 +92,7 @@ $(() => {
 
 
   const updateItem = (itemId, itemPrice) => {
-    for(const item of orderList.items) {
+    for (const item of orderList.items) {
       if (item.item_id === itemId) {
         item.quantity++;
         item.price += itemPrice;
@@ -117,25 +117,25 @@ $(() => {
 
 
   // When client clicks on the add-to-cart button
-  $(document).on("click", ".add-to-cart", function(event) {
+  $(document).on("click", ".add-to-cart", function (event) {
     event.preventDefault();
 
     $('.message-to-customer').hide();
     $('#clear-cart').show();
 
-
-    $.ajax('/api/add-to-cart', {
+    $.ajax('/api/addToCart', {
       method: 'POST',
       dataType: 'JSON',
       data: {
         id: event.target.value
       },
       success: (data) => {
+        console.log(data)
         const itemId = data.item[0].id;
         const itemName = data.item[0].name;
         const itemPrice = data.item[0].price;
-        totalPlusTax += itemPrice;
-        refreshSumOrder(totalPlusTax);
+        total += itemPrice;
+        refreshSumOrder(total);
         changeCart(itemId, itemName, itemPrice)
         renderItems();
       },
@@ -147,7 +147,7 @@ $(() => {
   });
 
 
-  $(document).on("click", "#clear-cart", function(event) {
+  $(document).on("click", "#clear-cart", function (event) {
     event.preventDefault();
 
     $itemContainer.empty();
@@ -157,7 +157,7 @@ $(() => {
 
 
   // Order is triggered
-  $(document).on("click", ".order-button", function(event) {
+  $(document).on("click", ".order-button", function (event) {
     event.preventDefault();
 
     //Clears order-summary and displays message

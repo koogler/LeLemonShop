@@ -60,16 +60,9 @@ const login = require("./routes/login");
 ///////////////////////
 
 app.use("/api/users", usersRoutes(db));
-<<<<<<< HEAD
-=======
-app.use("/api/login", loginRoutes(db))
-app.use("/api/add-to-cart", addToCart(db));
-app.use("/api/menu", activeMenu(db));
-app.use("/api/orders", orders(db));
->>>>>>> Evan_backend
 app.use("/api/twilio", twilioRoutes(db))
 app.use("/api/login", login(db))
-app.use("/api/add-to-cart", addToCart(db));
+app.use("/api/addToCart", addToCart(db));
 app.use("/api/menu", activeMenu(db));
 app.use("/api/orders", orders(db));
 app.use("/api/view-cart", view(db));
