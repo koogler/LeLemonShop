@@ -1,0 +1,54 @@
+nav {
+  height: 120px;
+  width: 100%;
+  background-color: white;
+  color: #FFFFFF;
+  padding: 0 3em;
+  font-family: 'Sora', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+}
+
+.logo-container{
+  width: 30vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.8em;
+  color: rgb(219, 109, 19);
+
+}
+
+nav a {
+  font-size: 1.3em;
+}
+
+#logo {
+  width: 4em;
+  height: 4em;
+}
+
+.customer-greeting{
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.2em;
+  color: #3565B0;
+}
+
+.nav-link {
+  color: black;
+  font-size: 1em;
+}
+
+
+
+
+
+
