@@ -26,7 +26,7 @@ $(() => {
 
   // prepending the markup for each menu item (prepend for descending order)
   const renderMenuItems = function(menu) {
-    for (const item in menu) {
+    for (const item of menu) {
       const newItem = createMenuItem(item);
       $("#menu").prepend(newItem);   // "id = menu" in index.ejs
     }
