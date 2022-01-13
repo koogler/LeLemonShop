@@ -29,15 +29,9 @@ module.exports = (db) => {
     const foodID = req.body.id
     const qp = [foodID]
     let query = `
-    UPDATE menu_orders
-    SET 
-      quantity = menu_orders.quantity + 1
-    FROM
-      menu_orders t
-      INNER JOIN food_items c
-        ON t.food_id = c.id
-    WHERE
-      menu_orders.food_id = $1;`;
+    SELECT * FROM food_items
+    WHERE id = $1;
+    `;
 
     db.query(query, qp)
     .then(data => {

@@ -6,11 +6,11 @@ const router  = express.Router();
 /////////////////////////////
 
 module.exports = (db) => {
-  router.get("/:id", (req, res) => {
+  router.get("/", (req, res) => {
     const orderID = req.params.id;
     const qp = [orderID]
     let query = `
-    SELECT food_item.name as name, ROUND(SUM(food_item.price * quantity), 2) as total_price
+    SELECT food_item.name as name, SUM(food_item.price * quantity) as total_price
     FROM orders
     JOIN food_item ON food_item.id = food_id
     WHERE orders.id = $1
@@ -26,7 +26,11 @@ module.exports = (db) => {
       });
   });
 
-  router.post("/:id", (req, res) => {
+  return router;
+};
+
+/*
+  router.post("/", (req, res) => {
     const orderID = req.params.id;
     const qp = [orderID]
     let query = `
@@ -45,6 +49,4 @@ module.exports = (db) => {
         res.status(500).send("I've stapled the lemons to the wall");
       });
   });
-
-  return router;
-};
+*/

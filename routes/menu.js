@@ -17,7 +17,7 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         const item = data.rows;
-        res.json({item});
+        res.json(item);
       })
       .catch(err => {
         res.status(500).send("No Lemons here");
@@ -35,7 +35,7 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         const item = data.rows;
-        res.json({item});
+        res.json(item);
       })
       .catch(err => {
         res.status(500).send("I've stapled the lemons to the wall");

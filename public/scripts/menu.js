@@ -1,14 +1,13 @@
 
 
 $(() => {
-
-
+  
   // creating a markup template that helps in prepending each menu item
   const createMenuItem = function(item) {
     let $markup = `
     <div class="col">
       <div class="card h-80">
-        <img src=${item.image_url} class="card-img-top" alt="...">
+        <img src=${item.image} class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${item.name}</h5>
           <p class="card-text">${item.description}</p>
@@ -26,7 +25,7 @@ $(() => {
 
   // prepending the markup for each menu item (prepend for descending order)
   const renderMenuItems = function(menu) {
-    for (const item of menu) {
+    for (const item in menu) {
       const newItem = createMenuItem(item);
       $("#menu").prepend(newItem);   // "id = menu" in index.ejs
     }
@@ -42,7 +41,12 @@ $(() => {
       success: (data) => {
         const menu = data.menuItems;
         renderMenuItems(menu)
+      },
+
+      error: (err) => {
+        console.log(err, "ya dun goofed")
       }
+
     })
   };
 
