@@ -45,16 +45,16 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
-const twilioRoutes = require("./routes/twilio")
 const addToCart = require("./routes/route-to-cart");
 const activeMenu = require("./routes/menu");
 const orders = require("./routes/orders");
+const twilioRoutes = require("./routes/twilio")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/login", loginRoutes(db))
-app.use("/api/order", addToCart(db));
+app.use("/api/my-orders", addToCart(db));
 app.use("/api/menu", activeMenu(db));
 app.use("/api/order", orders(db));
 app.use("/api/twilio", twilioRoutes(db))
