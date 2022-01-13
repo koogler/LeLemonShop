@@ -8,8 +8,7 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/", (req, res) => {
     let query = `
-    SELECT name, image, description, price
-    FROM food_items
+    SELECT * FROM food_items
     WHERE isActive = TRUE
     ORDER BY name;
     `;
@@ -26,8 +25,7 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
     let query = `
-    SELECT name, image, description, price
-    FROM food_items
+    SELECT * FROM food_items
     WHERE isActive = TRUE
     ORDER BY name;
     `;

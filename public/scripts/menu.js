@@ -6,7 +6,7 @@ $(() => {
     let $markup = `
     <div class="col">
       <div class="card h-80">
-        <img src=${item.image_url} class="card-img-top" alt="...">
+        <img src=${item.image} class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${item.name}</h5>
           <p class="card-text">${item.description}</p>
@@ -25,7 +25,8 @@ $(() => {
   // prepending the markup for each menu item (prepend for descending order)
   const renderMenuItems = function(menu) {
     for (const item in menu) {
-      const newItem = createMenuItem(item);
+      const newItem = createMenuItem(menu[item]);
+      console.log(newItem)
       $("#menu").append(newItem);   // "id = menu" in index.ejs
     }
   };
@@ -33,13 +34,12 @@ $(() => {
 
   // Ajax request to get JSON data for rendering the menu items
   const getMenu = function() {
-    console.log("Hello Goodbye")
     $.ajax({
       url: "/api/menu",
       type: "GET",
       dataType: "JSON",
       success: (data) => {
-        const menu = data.item;
+        const menu = data;
         renderMenuItems(menu)
       }
     })
