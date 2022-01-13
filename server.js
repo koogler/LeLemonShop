@@ -41,25 +41,32 @@ app.use(
 
 app.use(express.static("public"));
 
-// Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
+////////////
+// Routes //
+////////////
+
 const usersRoutes = require("./routes/users");
-const loginRoutes = require("./routes/login");
-const addToCart = require("./routes/route-to-cart");
+const twilioRoutes = require("./routes/twilio");
+const addToCart = require("./routes/add-to-cart");
 const activeMenu = require("./routes/menu");
 const orders = require("./routes/orders");
-const twilioRoutes = require("./routes/twilio")
+const view = require("./routes/view-cart");
+const removeFromCart = require("./routes/remove-item-from-cart");
+const allProfit = require("./routes/profit");
 
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
+///////////////////////
+// Mounts for Routes //
+///////////////////////
+
 app.use("/api/users", usersRoutes(db));
-app.use("/api/login", loginRoutes(db))
-app.use("/api/my-orders", addToCart(db));
-app.use("/api/menu", activeMenu(db));
-app.use("/api/order", orders(db));
 app.use("/api/twilio", twilioRoutes(db))
-
-// Note: mount other resources here, using the same pattern above
+app.use("/api/login", loginRoutes(db))
+app.use("/api/add-to-cart", addToCart(db));
+app.use("/api/menu", activeMenu(db));
+app.use("/api/orders", orders(db));
+app.use("/api/view-cart", view(db));
+app.use("/api/remove-item-from-cart", removeFromCart(db));
+app.use("/api/profits", allProfit(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!

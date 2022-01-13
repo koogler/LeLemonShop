@@ -1,9 +1,9 @@
 const express = require('express');
 const router  = express.Router();
 
-///////////////////////////////
-// Food items to add to cart //
-///////////////////////////////
+////////////////////////////////////
+// Food items to remove from cart //
+////////////////////////////////////
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -24,20 +24,20 @@ module.exports = (db) => {
         res.status(500).send("I've stapled the lemons to the wall");
       });
   });
+
   router.post("/", (req, res) => {
     const foodID = req.body.id
     const qp = [foodID]
     let query = `
     UPDATE menu_orders
     SET 
-      quantity = menu_orders.quantity + 1
+      quantity = menu_orders.quantity - 1
     FROM
       menu_orders t
       INNER JOIN food_items c
         ON t.food_id = c.id
     WHERE
-      menu_orders.food_id = 2;`;
-
+      menu_orders.food_id = $1;`;
 
     db.query(query, qp)
     .then(data => {
