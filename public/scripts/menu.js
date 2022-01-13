@@ -23,7 +23,6 @@ $(() => {
     return $markup;
   };
 
-
   // prepending the markup for each menu item (prepend for descending order)
   const renderMenuItems = function(menu) {
     for (const item of menu) {
@@ -42,6 +41,9 @@ $(() => {
       success: (data) => {
         const menu = data.menuItems;
         renderMenuItems(menu)
+      },
+      error: (err) => {
+        console.log("error: ", err)
       }
     })
   };
