@@ -46,21 +46,22 @@ app.use(express.static("public"));
 ////////////
 
 const usersRoutes = require("./routes/users");
-const twilioRoutes = require("./routes/twilio");
+// const twilioRoutes = require("./routes/twilio");
 const addToCart = require("./routes/add-to-cart");
 const activeMenu = require("./routes/menu");
 const orders = require("./routes/orders");
 const view = require("./routes/view-cart");
 const removeFromCart = require("./routes/remove-item-from-cart");
 const allProfit = require("./routes/profit");
+const login = require("./routes/login");
 
 ///////////////////////
 // Mounts for Routes //
 ///////////////////////
 
 app.use("/api/users", usersRoutes(db));
-app.use("/api/twilio", twilioRoutes(db))
-app.use("/api/login", loginRoutes(db))
+// app.use("/api/twilio", twilioRoutes(db))
+// app.use("/api/login", loginRoutes(db))
 app.use("/api/add-to-cart", addToCart(db));
 app.use("/api/menu", activeMenu(db));
 app.use("/api/orders", orders(db));
@@ -72,12 +73,12 @@ app.use("/api/profits", allProfit(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/login/:id", (req, res) => {
-  const id = req.params.id
-  const user = (`SELECT id FROM users WHERE id = $1`, [id])
-  req.session['user_id'] = user
-  res.redirect("/")
-})
+// app.get("/login/:id", (req, res) => {
+//   const id = req.params.id
+//   const user = (`SELECT id FROM users WHERE id = $1`, [id])
+//   req.session['user_id'] = user
+//   res.redirect("/")
+// })
 
 app.get("/", (req, res) => {
   const cookieStore = (req.session.userId);
