@@ -8,8 +8,7 @@ const router  = express.Router();
 module.exports = (db) => {
   router.get("/", (req, res) => {
     let query = `
-    SELECT name, image, description, price
-    FROM food_items
+    SELECT * FROM food_items
     WHERE isActive = TRUE
     ORDER BY name;
     `;
@@ -17,7 +16,7 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         const item = data.rows;
-        res.json({item});
+        res.json(item);
       })
       .catch(err => {
         res.status(500).send("No Lemons here");
@@ -26,16 +25,16 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
     let query = `
-    SELECT name, image, description, price
-    FROM food_items
+    SELECT * FROM food_items
     WHERE isActive = TRUE
     ORDER BY name;
     `;
 
     db.query(query)
       .then(data => {
+        console.log()
         const item = data.rows;
-        res.json({item});
+        res.json(item);
       })
       .catch(err => {
         res.status(500).send("I've stapled the lemons to the wall");

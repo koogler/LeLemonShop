@@ -24,7 +24,7 @@ $(() => {
   // prepending the markup for each menu item (prepend for descending order)
   const renderMenuItems = function (menu) {
     for (const item in menu) {
-      const newItem = createMenuItem(item);
+      const newItem = createMenuItem(menu[item]);
       $("#menu").append(newItem);   // "id = menu" in index.ejs
     }
   };
@@ -37,7 +37,7 @@ $(() => {
       type: "GET",
       dataType: "JSON",
       success: (data) => {
-        const menu = data.item;
+        const menu = data;
         renderMenuItems(menu)
       },
       error: (err) => {

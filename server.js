@@ -47,10 +47,9 @@ app.use(express.static("public"));
 
 const usersRoutes = require("./routes/users");
 const twilioRoutes = require("./routes/twilio");
-const addToCart = require("./routes/add-to-cart");
+const addToCart = require("./routes/addToCart");
 const activeMenu = require("./routes/menu");
 const orders = require("./routes/orders");
-const view = require("./routes/view-cart");
 const removeFromCart = require("./routes/remove-item-from-cart");
 const allProfit = require("./routes/profit");
 const login = require("./routes/login");
@@ -60,19 +59,11 @@ const login = require("./routes/login");
 ///////////////////////
 
 app.use("/api/users", usersRoutes(db));
-<<<<<<< HEAD
-=======
-app.use("/api/login", loginRoutes(db))
-app.use("/api/add-to-cart", addToCart(db));
-app.use("/api/menu", activeMenu(db));
-app.use("/api/orders", orders(db));
->>>>>>> Evan_backend
 app.use("/api/twilio", twilioRoutes(db))
 app.use("/api/login", login(db))
-app.use("/api/add-to-cart", addToCart(db));
+app.use("/api/addToCart", addToCart(db));
 app.use("/api/menu", activeMenu(db));
 app.use("/api/orders", orders(db));
-app.use("/api/view-cart", view(db));
 app.use("/api/remove-item-from-cart", removeFromCart(db));
 app.use("/api/profits", allProfit(db));
 

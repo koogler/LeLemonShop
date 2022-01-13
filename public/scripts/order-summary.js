@@ -82,6 +82,7 @@ $(() => {
   const isInCart = (itemId) => {
     const itemsInCart = [];
     for(const item of orderList.items) {
+      console.log("I am v smol")
       itemsInCart.push(item.item_id);
     }
     if (itemsInCart.includes(itemId)) {
@@ -123,8 +124,7 @@ $(() => {
     $('.message-to-customer').hide();
     $('#clear-cart').show();
 
-
-    $.ajax('/api/add-to-cart', {
+    $.ajax('/api/addToCart', {
       method: 'POST',
       dataType: 'JSON',
       data: {
@@ -171,7 +171,7 @@ $(() => {
       dataType: 'JSON',
       data: orderList,
       success: (data) => {
-        console.log(data);
+        $('#order-item').empty();
       },
       error: (err) => {
         console.log(`Error details: ${err}`);
