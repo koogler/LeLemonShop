@@ -26,7 +26,9 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
   <!-- External CSS -->
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=El+Messiri&family=Permanent+Marker&family=Source+Sans+3:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee&family=El+Messiri&family=Permanent+Marker&family=Source+Sans+3:ital,wght@0,300;0,600;1,300;1,600&display=swap"
+    rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,81 +77,80 @@
 <body>
 
 
-    <!-- Top nav bar (fixed) -->
+  <!-- Top nav bar (fixed) -->
 
-    <nav>
-      <div class="logo-container"><img id="logo" src="/images/le-lemon.png">Le-LEMON</div>
-        <!-- <p class="customer-greeting">Welcome!</p> -->
-        <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link" href="/my-orders">MY ORDERS</a>
-          </li>
-          <li class="nav-item">
-            <form action="/api/" method="POST">
-              <button type="submit" class="btn btn-primary logout-btn">LOGOUT</button>
-            </form>
-          </li>
-        </ul>
-    </nav>
-
-
-    <!-- main container of the page -->
-
-    <main id="main-container">
-
-
-      <!-- menu section -->
-
-      <section id="section-container1">
-
-        <div id="menu" class="row row-cols-md-3 g-4">
-
-          <!-- ALL the menu items are populated here using jQuery -->
-
-        </div>
-      </section>
-
-
-      <!-- Order summary section -->
-
-      <section class="card" id="order-container">
-        <header class="order-header">
-          <h5 class="card-title">Order Summary</h5>
-          <button type="button" class="btn btn-primary" id="clear-cart">Clear</button>
-        </header>
-
-        <form id="order-now" action="/api/orders" method="POST">
-          <section class="item-list">
-            <table class="order-table">
-              <thead>
-                <tr>
-                  <th scope="col" class="order-item-name">Item</th>
-                  <th scope="col" class="order-quantity">Quantity</th>
-                  <th scope="col" class="order-price">Price</th>
-                </tr>
-              </thead>
-
-              <!-- Items added to cart are populated/appended here using jQuery -->
-
-              <tbody id="selected-items-container"></tbody>
-
-            </table>
-            <p class='message-to-customer' type='text'></p>
-            <table class="order-table" id="sum-order"></table>
-          </section>
-
-
-          <footer class="order-footer">
-            <div class="order-button">
-              <button type="submit" class="btn btn-primary logout-btn">ORDER NOW</button>
-            </div>
-          </footer>
+  <nav>
+    <div class="logo-container"><img id="logo" src="/images/le-lemon.png">Le-LEMON</div>
+    <!-- <p class="customer-greeting">Welcome!</p> -->
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" href="/api/my-orders">MY ORDERS</a>
+      </li>
+      <li class="nav-item">
+        <form action="/api/" method="POST">
+          <button type="submit" class="btn btn-primary logout-btn">LOGOUT</button>
         </form>
-      </section>
+      </li>
+    </ul>
+  </nav>
 
 
-    </main>
+  <!-- main container of the page -->
+
+  <main id="main-container">
+
+
+    <!-- menu section -->
+
+    <section id="section-container1">
+
+      <div id="menu" class="row row-cols-md-3 g-4">
+
+        <!-- ALL the menu items are populated here using jQuery -->
+
+      </div>
+    </section>
+
+
+    <!-- Order summary section -->
+
+    <section class="card" id="order-container">
+      <header class="order-header">
+        <h5 class="card-title">Order Summary</h5>
+        <button type="button" class="btn btn-primary" id="clear-cart">Clear</button>
+      </header>
+
+      <form id="order-now" action="/api/orders" method="POST">
+        <section class="item-list">
+          <table class="order-table">
+            <thead>
+              <tr>
+                <th scope="col" class="order-item-name">Item</th>
+                <th scope="col" class="order-quantity">Quantity</th>
+                <th scope="col" class="order-price">Price</th>
+              </tr>
+            </thead>
+
+            <!-- Items added to cart are populated/appended here using jQuery -->
+
+            <tbody id="selected-items-container"></tbody>
+
+          </table>
+          <p class='message-to-customer' type='text'></p>
+          <table class="order-table" id="sum-order"></table>
+        </section>
+
+
+        <footer class="order-footer">
+          <div class="order-button">
+            <button type="submit" class="btn btn-primary logout-btn">ORDER NOW</button>
+          </div>
+        </footer>
+      </form>
+    </section>
+
+
+  </main>
 </body>
 
 </html>
-

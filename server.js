@@ -52,6 +52,7 @@ const activeMenu = require("./routes/menu");
 const orders = require("./routes/orders");
 const removeFromCart = require("./routes/remove-item-from-cart");
 const allProfit = require("./routes/profit");
+const login = require("./routes/login");
 
 ///////////////////////
 // Mounts for Routes //
@@ -59,6 +60,7 @@ const allProfit = require("./routes/profit");
 
 app.use("/api/users", usersRoutes(db));
 app.use("/api/twilio", twilioRoutes(db))
+app.use("/api/login", login(db))
 app.use("/api/add-to-cart", addToCart(db));
 app.use("/api/menu", activeMenu(db));
 app.use("/api/orders", orders(db));

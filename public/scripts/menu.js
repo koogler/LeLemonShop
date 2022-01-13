@@ -1,8 +1,7 @@
-
 $(() => {
 
   // creating a markup template that helps in prepending each menu item
-  const createMenuItem = function(item) {
+  const createMenuItem = function (item) {
     let $markup = `
     <div class="col">
       <div class="card h-80">
@@ -21,7 +20,6 @@ $(() => {
     return $markup;
   };
 
-
   // prepending the markup for each menu item (prepend for descending order)
   const renderMenuItems = function(menu) {
     for (const item in menu) {
@@ -33,7 +31,7 @@ $(() => {
 
 
   // Ajax request to get JSON data for rendering the menu items
-  const getMenu = function() {
+  const getMenu = function () {
     $.ajax({
       url: "/api/menu",
       type: "GET",
@@ -41,6 +39,9 @@ $(() => {
       success: (data) => {
         const menu = data;
         renderMenuItems(menu)
+      },
+      error: (err) => {
+        console.log("error: ", err)
       }
     })
   };
