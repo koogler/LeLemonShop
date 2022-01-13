@@ -15,8 +15,14 @@ module.exports = function (db) {
     db.query(`SELECT name FROM users WHERE users.id = $1`, user)
       .then(data => {
         const userName = data.rows[0].name;
-        const order = "Lemonade"
-        let messageToOwner = `A new order has been placed for ${order} by ${userName}! Get to work!`;
+        const order = req.body.items
+        console.log(order)
+        let orderItems = order.reduce((ac, cur) => {
+          ac += `${cur.quantity} of ${cur.name}, `;
+          return ac;
+        }, '');
+        orderItems = orderItems.substring(0, orderItems.length - 2)
+        let messageToOwner = `A new order has been placed for ${orderItems} by ${userName}! Get to work!`;
         client.messages.create({
           to: ownerNumber,
           from: '+19402896240',
