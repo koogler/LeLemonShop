@@ -54,10 +54,10 @@ const orders = require("./routes/orders");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/login", loginRoutes(db))
-app.use("/api/twilio", twilioRoutes(db))
 app.use("/api/order", addToCart(db));
 app.use("/api/menu", activeMenu(db));
 app.use("/api/order", orders(db));
+app.use("/api/twilio", twilioRoutes(db))
 
 // Note: mount other resources here, using the same pattern above
 
