@@ -59,7 +59,6 @@ const allProfit = require("./routes/profit");
 
 app.use("/api/users", usersRoutes(db));
 app.use("/api/twilio", twilioRoutes(db))
-app.use("/api/login", loginRoutes(db))
 app.use("/api/add-to-cart", addToCart(db));
 app.use("/api/menu", activeMenu(db));
 app.use("/api/orders", orders(db));
