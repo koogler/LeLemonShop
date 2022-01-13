@@ -1,0 +1,38 @@
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-text {
+  width: 100%;
+  height: 100px;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-footer {
+  text-align: center;
+}
+
+.card-price {
+  text-align: center;
+  text-decoration: bold;
+  font-size: 1.3em;
+  height: 30px;
+}
+
+.col:hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.05) translate(2px, 2px);
+}
+
+
