@@ -1,10 +1,8 @@
-
-
 $(() => {
 
 
   // creating a markup template that helps in prepending each menu item
-  const createMenuItem = function(item) {
+  const createMenuItem = function (item) {
     let $markup = `
     <div class="col">
       <div class="card h-80">
@@ -24,22 +22,22 @@ $(() => {
   };
 
   // prepending the markup for each menu item (prepend for descending order)
-  const renderMenuItems = function(menu) {
-    for (const item of menu) {
+  const renderMenuItems = function (menu) {
+    for (const item in menu) {
       const newItem = createMenuItem(item);
-      $("#menu").prepend(newItem);   // "id = menu" in index.ejs
+      $("#menu").append(newItem);   // "id = menu" in index.ejs
     }
   };
 
 
   // Ajax request to get JSON data for rendering the menu items
-  const getMenu = function() {
+  const getMenu = function () {
     $.ajax({
       url: "/api/menu",
       type: "GET",
       dataType: "JSON",
       success: (data) => {
-        const menu = data.menuItems;
+        const menu = data.item;
         renderMenuItems(menu)
       },
       error: (err) => {
