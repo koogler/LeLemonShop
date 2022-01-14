@@ -16,7 +16,6 @@ module.exports = function (db) {
       .then(data => {
         const userName = data.rows[0].name;
         const order = req.body.items
-        console.log(order)
         let orderItems = order.reduce((ac, cur) => {
           ac += `${cur.quantity} of ${cur.name}, `;
           return ac;

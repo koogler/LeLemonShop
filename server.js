@@ -54,7 +54,6 @@ const removeFromCart = require("./routes/remove-item-from-cart");
 const allProfit = require("./routes/profit");
 const login = require("./routes/login");
 const adminView = require("./routes/admin");
-const res = require("express/lib/response");
 
 ///////////////////////
 // Mounts for Routes //
@@ -83,9 +82,10 @@ app.get("/login/:id", (req, res) => {
 
 app.get("/", (req, res) => {
   const cookieStore = (req.session.userId);
-  const templateVars = { userId: cookieStore };
+  const templateVars = { orders: orders };
   res.render("index", templateVars);
 });
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

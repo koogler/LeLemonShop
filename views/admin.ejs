@@ -87,7 +87,7 @@
       <% for(let order in orders) { %>
         <div class="list-group">
           <li class="list-group-item history-title orderID" value="<%= orders[order].orderId %>">
-            <strong>Order ID: </strong><%= `${orders[order].orderId} --- At: ${orders[order].date.toDateString()} `%>
+            <%= JSON.stringify(orders[order]) %>
           </li>
           <li class="list-group-item history-title order-status">
             <strong>Status: </strong><%= ` ${orders[order].status} `%>
@@ -95,7 +95,7 @@
           <li class="list-group-item">
             <table class="table table-sm table-borderless">
               <tbody>
-                <% for(const item of orders[order].contents) { %>
+                <% for(const item of orders) { %>
                   <tr>
                     <td>
                       <%= item %>
