@@ -53,6 +53,7 @@ const orders = require("./routes/orders");
 const removeFromCart = require("./routes/remove-item-from-cart");
 const allProfit = require("./routes/profit");
 const login = require("./routes/login");
+const adminView = require("./routes/admin");
 
 ///////////////////////
 // Mounts for Routes //
@@ -66,6 +67,7 @@ app.use("/api/menu", activeMenu(db));
 app.use("/api/orders", orders(db));
 app.use("/api/remove-item-from-cart", removeFromCart(db));
 app.use("/api/profits", allProfit(db));
+app.use("/api/admin", adminView(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!

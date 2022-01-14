@@ -10,7 +10,7 @@ module.exports = (db) => {
     const orderID = req.params.id;
     const qp = [orderID]
     let query = `
-    SELECT orders.id, food_item.name as name, SUM(food_item.price * quantity) as total_price
+    SELECT orders.id, food_item.name as name, SUM(food_item.price * quantity) as total_price, ordered_at - integer 7
     FROM orders
     JOIN food_item ON food_item.id = food_id
     WHERE orders.id = $1
