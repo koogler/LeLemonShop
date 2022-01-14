@@ -37,54 +37,55 @@ module.exports = function (db) {
   })
 
   router.post("/prep-time", (req, res) => {
-    const user = req.session["user_id"]
-    db.query(`SELECT name, phone FROM users WHERE users.id = $1`, user)
+    console.log(req.body)
+    // {
+    //   value: [
+    //     { name: 'userName', value: 'Bob' },
+    //     { name: 'userPhone', value: '+14161234567 ' },
+    //     { name: 'minutes', value: '15' }
+    //   ],
+    //   orderId: '4',
+    //   timeNow: '1642131378165'
+    // }
+    const order = req.body.orderId
+    const timeSubmit = req.body.value[2].value
+    const userName = req.body.value[0].value
+    let messageToUser = `Hi, ${userName}! Your order #${order} will be ready in ${timeSubmit} minutes.`;
+    db.query(`SELECT phone FROM users WHERE users.id = 1`)
       .then(data => {
-        const userName = data.rows[0].name;
-        const userPhone = data.rows[0].phone
-        const order = "Lemonade"
-        const timeUntilReady = 5
-        let messageToUser = `Hi, ${userName}! Your order of ${order} will be ready in ${timeUntilReady} minutes.`;
-        db.query(`SELECT phone FROM users WHERE users.id = 1`)
-          .then(data => {
-            const ownerPhoneNumber = data.rows[0].phone
-            client.messages.create({
-              to: ownerNumber, //will be userPhone but need to update
-              from: '+19402896240',
-              body: messageToUser
-            })
-              .then(message => console.log(message.sid));
+        const ownerPhoneNumber = data.rows[0].phone
+        client.messages.create({
+          to: ownerNumber, //will be userPhone but need to update
+          from: '+19402896240',
+          body: messageToUser
+        })
+          .then(message => {
+            console.log(message.sid)
+            res.redirect("/admin");
           })
-          .catch(err => {
-            res.status(500)
-              .json({ error: err.message });
-          });
       })
-  })
+      .catch(err => {
+        res.status(500)
+          .json({ error: err.message });
+      });
+  });
 
   router.post("/pickup-alert", (req, res) => {
-    const user = req.session["user_id"]
-    db.query(`SELECT name, phone FROM users WHERE users.id = $1`, user)
+    let messageToUser = `Hi, your order is ready for pickup. Thanks for ordering from LeLemon!`;
+    db.query(`SELECT phone FROM users WHERE users.id = 1`)
       .then(data => {
-        const userName = data.rows[0].name;
-        const userPhone = data.rows[0].phone
-        const order = "Lemonade"
-        let messageToUser = `Hi, ${userName}! Your order of ${order} is ready.`;
-        db.query(`SELECT phone FROM users WHERE users.id = 1`)
-          .then(data => {
-            const ownerPhoneNumber = data.rows[0].phone
-            client.messages.create({
-              to: ownerNumber,
-              from: '+19402896240',
-              body: messageToUser
-            })
-              .then(message => console.log(message.sid));
-          })
-          .catch(err => {
-            res.status(500)
-              .json({ error: err.message });
-          });
+        const ownerPhoneNumber = data.rows[0].phone
+        client.messages.create({
+          to: ownerNumber,
+          from: '+19402896240',
+          body: messageToUser
+        })
+          .then(message => console.log(message.sid));
       })
+      .catch(err => {
+        res.status(500)
+          .json({ error: err.message });
+      });
   })
 
 

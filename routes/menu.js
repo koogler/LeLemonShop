@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 /////////////////////////////
 // Retrieve full menu list //
@@ -25,7 +25,7 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
     let query = `
-    SELECT * FROM food_items
+  SELECT * FROM food_items
     WHERE isActive = TRUE
     ORDER BY name;
     `;
