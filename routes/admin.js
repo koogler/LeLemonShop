@@ -14,6 +14,7 @@ module.exports = (db) => {
 
     db.query(query)
       .then(data => {
+        console.log(item)
         const item = data.rows;
         res.json(item);
       })
@@ -31,6 +32,7 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         const item = data.rows;
+        console.log(item)
         res.json(item);
       })
       .catch(err => {

@@ -4,3 +4,5 @@ public/styles
 *.log
 *.sqlite3
 .DS_Store
+routes/admin.js
+server.js

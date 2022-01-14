@@ -54,6 +54,7 @@ const removeFromCart = require("./routes/remove-item-from-cart");
 const allProfit = require("./routes/profit");
 const login = require("./routes/login");
 const adminView = require("./routes/admin");
+const res = require("express/lib/response");
 
 ///////////////////////
 // Mounts for Routes //
